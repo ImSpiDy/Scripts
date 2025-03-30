@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
 #
-# reupload file on pixel drain with help of circleci
+# login
+git config --global user.name "ImSpiDy"
+git config --global user.email "SpiDy2713@gmail.com"
 
-# Remove 0 and enter your file link
-URL=0
+echo $gh_token > mytoken.txt # login in github
+gh auth login --with-token < mytoken.txt
 
-if [ $URL == 0 ]; then
-exit 0
-fi
+# github release
+TAG=LineageExt-15-4.19
 
-wget $URL
+# download tested builds
+gh release download $TAG -p 'lineage-22.1-Ext-Community-lavender-Vanilla-20250327-1253.zip' -R https://github.com/ImSpiDy/Test-Builds
+gh release download $TAG -p 'lineage-22.1-Ext-Community-lavender-Gapps-20250327-1321.zip' -R https://github.com/ImSpiDy/Test-Builds
 
-FileName="$(basename $URL)"
-
-wget https://github.com/ManuelReschke/go-pd/releases/download/v1.4.0/go-pd_1.4.0_linux_amd64.tar.gz
-
-tar -xf go-pd*
-
-./go-pd upload $FileName
+# upload release builds
+gh release create LosExt-15-4.19 --generate-notes --repo https://github.com/ImSpiDy/build-release
+gh release upload --clobber LosExt-15-4.19 *.zip --repo https://github.com/ImSpiDy/build-release
