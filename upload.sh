@@ -15,6 +15,10 @@ echo "[1] Github Release [gh auth login]
 read -p "Please enter your number: " UP
 read -p "Please enter file path/name: " FP
 
+read_secret() {
+   echo -n "$1"; KEY=""; while IFS= read -r -s -n1 c; do [[ $c == $'\n' || $c == $'\0' ]] && echo && break; [[ $c == $'\177' ]] && KEY="${KEY%?}" && echo -ne "\b \b" || { KEY+="$c"; echo -n "*"; }; done
+ }
+
 if [ $UP == 1 ]; then
 read -p "Please enter github repo link: " GH
 FN="$(basename $FP)" && FN="${FN%%.*}"
@@ -24,14 +28,14 @@ gh release upload --clobber $FN $FP --repo $GH
 fi
 
 if [ $UP == 2 ]; then
-read -p "Please enter devupload key: " KEY
-echo -e "Started uploading file on DevUploads..."
-bash <(curl -s https://devuploads.com/upload.sh) -f $FP -k $KEY
+read_secret "Please enter devupload key: "
+echo "Started uploading file on DevUploads..."
+bash <(curl -s https://devuploads.com/upload.sh) -f $FP -k "$KEY"
 fi
 
 if [ $UP == 3 ]; then
-read -p "Please enter Pixel Drain key: " KEY
-echo -e "Started uploading file on PixelDrain..."
+read_secret "Please enter Pixel Drain key: "
+echo "Started uploading file on PixelDrain..."
 curl -T $FP -u ":$KEY" https://pixeldrain.com/api/file/
 fi
 
