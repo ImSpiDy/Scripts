@@ -19,12 +19,12 @@ chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # release
-SFG=0
+SFG=1
 GHR=1
-DL_TAG=AxionOS-15-4.19
-UP_TAG=AxionOS-15-4.19
-VANILLA=axion-1.4-NIGHTLY-20250516-COMMUNITY-VANILLA-lavender.zip
-GAPPS=axion-1.4-NIGHTLY-20250516-COMMUNITY-GMS-lavender.zip
+DL_TAG=infinity-15-4.19
+UP_TAG=InfinityX-15-4.19
+VANILLA=Project_Infinity-X-2.9-lavender-20250613-0819-VANILLA-OFFICIAL.zip
+GAPPS=Project_Infinity-X-2.9-lavender-20250613-0923-GAPPS-OFFICIAL.zip
 
 # download tested builds
 gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
