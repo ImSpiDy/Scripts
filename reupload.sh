@@ -19,15 +19,15 @@ chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # release
-SFG=1
+SFG=0
 GHR=1
-DL_TAG=infinity-15-4.19
-UP_TAG=InfinityX-15-4.19
+DL_TAG=cAOSP-16-4.19
+UP_TAG=cAOSP-16-4.19
 VANILLA=Project_Infinity-X-2.9-lavender-20250613-0819-VANILLA-OFFICIAL.zip
-GAPPS=Project_Infinity-X-2.9-lavender-20250613-0923-GAPPS-OFFICIAL.zip
+GAPPS=cAOSP_lavender-16.0-20250621-1445.zip
 
 # download tested builds
-gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
+#gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
 gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
