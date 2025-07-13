@@ -19,23 +19,23 @@ chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # release
-SFG=0
-GHR=1
-DL_TAG=cAOSP-16-4.19
-UP_TAG=cAOSP-16-4.19
-VANILLA=Project_Infinity-X-2.9-lavender-20250613-0819-VANILLA-OFFICIAL.zip
-GAPPS=cAOSP_lavender-16.0-20250621-1445.zip
+SFG=1
+GHR=0
+DL_TAG=infinity-15-4.19
+UP_TAG=InfinityX-15-4.19
+VANILLA=Project_Infinity-X-2.9-lavender-20250712-1758-VANILLA-UNOFFICIAL.zip
+GAPPS=Project_Infinity-X-2.9-lavender-20250712-1823-GAPPS-UNOFFICIAL.zip
 
 # download tested builds
-#gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
+gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
 gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
         if [ -f *VANILLA* ]; then
-                scp -i mysfgtoken.txt *VANILLA*.zip imspidy@frs.sourceforge.net:/home/frs/p/infinity-x/lavender/15/vanilla/
+                scp -i mysfgtoken.txt *VANILLA*.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
         fi
         if [ -f *GAPPS* ]; then
-                scp -i mysfgtoken.txt *GAPPS*.zip imspidy@frs.sourceforge.net:/home/frs/p/infinity-x/lavender/15/gapps/
+                scp -i mysfgtoken.txt *GAPPS*.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Gapps/
         fi
 fi
 if [ $GHR == 1 ]; then
