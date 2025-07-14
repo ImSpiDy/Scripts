@@ -32,10 +32,10 @@ gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
         if [ -f *VANILLA* ]; then
-                scp -i mysfgtoken.txt *VANILLA*.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
+                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
         fi
         if [ -f *GAPPS* ]; then
-                scp -i mysfgtoken.txt *.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-16/YAAP/Gapps/
+                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-16/YAAP/Gapps/
         fi
 fi
 if [ $GHR == 1 ]; then
