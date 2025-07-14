@@ -20,14 +20,14 @@ ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # release
 SFG=1
-GHR=0
-DL_TAG=infinity-15-4.19
-UP_TAG=InfinityX-15-4.19
+GHR=1
+DL_TAG=YAAP-16-4.19
+UP_TAG=YAAP-16-4.19
 VANILLA=Project_Infinity-X-2.9-lavender-20250712-1758-VANILLA-UNOFFICIAL.zip
-GAPPS=Project_Infinity-X-2.9-lavender-20250712-1823-GAPPS-UNOFFICIAL.zip
+GAPPS=YAAP-16-HOMEMADE-lavender-20250714-0527.zip
 
 # download tested builds
-gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
+#gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
 gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
@@ -35,7 +35,7 @@ if [ $SFG == 1 ]; then
                 scp -i mysfgtoken.txt *VANILLA*.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
         fi
         if [ -f *GAPPS* ]; then
-                scp -i mysfgtoken.txt *GAPPS*.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Gapps/
+                scp -i mysfgtoken.txt *.zip imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-16/YAAP/Gapps/
         fi
 fi
 if [ $GHR == 1 ]; then
