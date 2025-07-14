@@ -31,10 +31,10 @@ GAPPS=YAAP-16-HOMEMADE-lavender-20250714-0527.zip
 gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
-        if [ -f *VANILLA* ]; then
+        if [ -f $VANILLA ]; then
                 scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
         fi
-        if [ -f *GAPPS* ]; then
+        if [ -f $GAPPS ]; then
                 scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-16/YAAP/Gapps/
         fi
 fi
