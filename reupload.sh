@@ -35,7 +35,7 @@ if [ $SFG == 1 ]; then
                 scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-15/Infinity-X/Vanilla/
         fi
         if [ -f $GAPPS ]; then
-                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Android-16/Infinity-X-16/Gapps/
+                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Infinity-X-16/Gapps/
         fi
 fi
 if [ $GHR == 1 ]; then
