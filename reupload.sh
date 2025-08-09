@@ -23,16 +23,16 @@ SFG=1
 GHR=1
 DL_TAG=infinity-16-4.19
 UP_TAG=Infinity-16-4.19
-VANILLA=axion-1.6-FINAL-20250721-COMMUNITY-VANILLA-lavender.zip
-GAPPS=Project_Infinity-X-3.0-lavender-20250807-0615-GAPPS-UNOFFICIAL.zip
+VANILLA=Project_Infinity-X-3.1-lavender-20250808-1439-VANILLA-UNOFFICIAL.zip
+GAPPS=Project_Infinity-X-3.1-lavender-20250808-1458-GAPPS-UNOFFICIAL.zip
 
 # download tested builds
-#gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
+gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
 gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
         if [ -f $VANILLA ]; then
-                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Axion-15/Vanilla/
+                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Infinity-X-16/Vanilla/
         fi
         if [ -f $GAPPS ]; then
                 scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Infinity-X-16/Gapps/
