@@ -18,17 +18,26 @@ echo "-----END OPENSSH PRIVATE KEY-----" >> mysfgtoken.txt
 chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
-# release
+# site
 SFG=1
 GHR=1
-DL_TAG=Neoteric-16-4.19
-UP_TAG=Neoteric-16-4.19
-VANILLA=Project_Infinity-X-3.1-lavender-20250808-1439-VANILLA-UNOFFICIAL.zip
-GAPPS=Neoteric-OS_lavender-4.0-20250817_000151.zip
+
+# links
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.2-lavender-20250902-0334-VANILLA-UNOFFICIAL.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.2-lavender-20250902-0355-GAPPS-UNOFFICIAL.zip
+
+if [ ! $VANILLA ]; then
+TAG=$(basename "$(dirname "$GAPPS")")
+else
+TAG=$(basename "$(dirname "$VANILLA")")
+fi
+
+VANILLA=$(basename "$VANILLA")
+GAPPS=$(basename "$GAPPS")
 
 # download tested builds
-#gh release download $DL_TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
-gh release download $DL_TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
+gh release download $TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
+gh release download $TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
         if [ -f $VANILLA ]; then
@@ -39,7 +48,8 @@ if [ $SFG == 1 ]; then
         fi
 fi
 if [ $GHR == 1 ]; then
+	TAG="$(tr '[:lower:]' '[:upper:]' <<< ${TAG:0:1})${TAG:1}"
         # upload release builds
-        gh release create $UP_TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
-        gh release upload --clobber $UP_TAG *.zip --repo https://github.com/ImSpiDy/build-release
+        gh release create $TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
+        gh release upload --clobber $TAG *.zip --repo https://github.com/ImSpiDy/build-release
 fi
