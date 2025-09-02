@@ -20,6 +20,7 @@ ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # site
 SFG=1
+SFG_TAG=Infinity-X-16
 GHR=1
 
 # links
@@ -41,10 +42,10 @@ gh release download $TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
         if [ -f $VANILLA ]; then
-                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Infinity-X-16/Vanilla/
+                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Vanilla/
         fi
         if [ -f $GAPPS ]; then
-                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/Neoteric-16/Gapps/
+                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Gapps/
         fi
 fi
 if [ $GHR == 1 ]; then
