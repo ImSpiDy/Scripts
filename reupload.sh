@@ -20,12 +20,12 @@ ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # site
 SFG=1
-SFG_TAG=Infinity-X-16
+SFG_TAG=Yaap-16
 GHR=1
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.2-lavender-20250902-0334-VANILLA-UNOFFICIAL.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.2-lavender-20250902-0355-GAPPS-UNOFFICIAL.zip
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/YAAP-16-4.19/YAAP-16-HOMEMADE-VANILLA-lavender-20250929-1812.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/YAAP-16-4.19/YAAP-16-HOMEMADE-GAPPS-lavender-20250929-1826.zip
 
 if [ ! $VANILLA ]; then
 TAG=$(basename "$(dirname "$GAPPS")")
