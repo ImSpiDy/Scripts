@@ -18,14 +18,14 @@ echo "-----END OPENSSH PRIVATE KEY-----" >> mysfgtoken.txt
 chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
-# site # Infinity-X-16 # Yaap-16
+# site # Infinity-X-16 # Yaap-16 #LosExt-16
 SFG=1
-SFG_TAG=Infinity-X-16
+SFG_TAG=LosExt-16
 GHR=1
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.4-lavender-02.11.2025-VANILLA-UNOFFICIAL.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.4-lavender-02.11.2025-GAPPS-UNOFFICIAL.zip
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/LineageExt-16-4.19/lineage-23.0-Ext-Community-lavender-Vanilla-20251128-1505.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/LineageExt-16-4.19/lineage-23.0-Ext-Community-lavender-Gapps-20251128-1518.zip
 
 if [ ! $VANILLA ]; then
 TAG=$(basename "$(dirname "$GAPPS")")
