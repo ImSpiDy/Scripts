@@ -17,3 +17,8 @@ bash <(curl -s https://raw.githubusercontent.com/ImSpiDy/Scripts/main/upload.sh)
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/ImSpiDy/Scripts/main/download.sh)
 ```
+
+### Dump recovery/fastboot archives/images
+```bash
+bash <(curl -s https://raw.githubusercontent.com/ImSpiDy/Scripts/main/dump.sh)
+```
