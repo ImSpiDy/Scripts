@@ -18,3 +18,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Dump it
 dumpyara $DUMP.zip
+
+if [ $2 = "--up" ]; then
+wget https://raw.githubusercontent.com/ImSpiDy/Scripts/refs/heads/main/dump-up.sh
+bash dump-up.sh $1
+fi
