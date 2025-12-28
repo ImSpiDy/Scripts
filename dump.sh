@@ -4,8 +4,12 @@
 #
 
 if [ -z "$1" ]; then
-    echo "Dump: Download link is missing, Please Enter link"
-    read -p " " $1
+    echo
+    echo -e "Dump: \e[1;31mDownload link is missing\e[0m, Please Enter link.\n"
+    read -p "-> " LINK
+    echo
+else
+    LINK=$1
 fi
 
 function check () {
@@ -13,7 +17,7 @@ function check () {
 }
 
 # Dump folder
-DUMP="$(basename "$1" .zip)"
+DUMP="$(basename "$LINK" .zip)"
 
 # Install Dumpyara
 if command -v pipx >/dev/null 2>&1; then pipx install dumpyara; else pip3 install dumpyara; fi
@@ -26,12 +30,13 @@ mv dump_deps/* $HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Download zip
-check $DUMP.zip "time wget $1"
+check $DUMP.zip "time wget $LINK"
 
 # Dump zip
 check $DUMP "dumpyara $DUMP.zip"
 
-# Clean Junks
-if [ -z "$2" ] && [ $2 = "--up" ]; then
-    bash <(curl -s https://raw.githubusercontent.com/ImSpiDy/Scripts/main/dump-up.sh) $1
+# Upload
+if [ -z "$2" ]; then UP=0; else UP=$2; fi
+if [ $UP = "--up" ]; then
+    bash <(curl -s https://raw.githubusercontent.com/ImSpiDy/Scripts/main/dump-up.sh) $LINK
 fi
