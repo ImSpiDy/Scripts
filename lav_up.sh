@@ -20,14 +20,14 @@ ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # site # Infinity-X-16 # Yaap-16 #LosExt-16
 SFG=1
-#SFG_TAG=Infinity-X-16
-SFG_TAG=LosExt-16
+SFG_TAG=Infinity-X-16
+#SFG_TAG=LosExt-16
 #SFG_TAG=Yaap-16
 GHR=1
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/LineageExt-16-4.19/lineage-23.1-Ext-Community-lavender-Vanilla-20260218-1444.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/LineageExt-16-4.19/lineage-23.1-Ext-Community-lavender-Gapps-20260218-1454.zip
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.8-lavender-23.03.2026-VANILLA-UNOFFICIAL.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.8-lavender-23.03.2026-GAPPS-UNOFFICIAL.zip
 
 if [ ! $VANILLA ]; then
 TAG=$(basename "$(dirname "$GAPPS")")
