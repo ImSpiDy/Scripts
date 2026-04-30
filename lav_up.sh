@@ -26,8 +26,8 @@ SFG_TAG=Infinity-X-16
 GHR=1
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.9-lavender-12.04.2026-VANILLA-UNOFFICIAL.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.9-lavender-12.04.2026-GAPPS-UNOFFICIAL.zip
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.9-lavender-29.04.2026-VANILLA-UNOFFICIAL.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.9-lavender-29.04.2026-GAPPS-UNOFFICIAL.zip
 
 if [ ! $VANILLA ]; then
 TAG=$(basename "$(dirname "$GAPPS")")
