@@ -19,15 +19,16 @@ chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
 # site # Infinity-X-16 # Yaap-16 #LosExt-16
-SFG=1
+SFG=0
 #SFG_TAG=Infinity-X-16
 #SFG_TAG=LosExt-16
 SFG_TAG=Yaap-16
-GHR=1
+GHR=0
+DEV=1
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/YAAP-16-4.19/YAAP-16-HOMEMADE-VANILLA-lavender-20260507.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/YAAP-16-4.19/YAAP-16-HOMEMADE-GAPPS-lavender-20260507.zip
+VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-VANILLA-UNOFFICIAL.zip
+GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-GAPPS-UNOFFICIAL.zip
 
 if [ ! $VANILLA ]; then
 TAG=$(basename "$(dirname "$GAPPS")")
@@ -55,4 +56,12 @@ if [ $GHR == 1 ]; then
         # upload release builds
         gh release create $TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
         gh release upload --clobber $TAG *.zip --repo https://github.com/ImSpiDy/build-release
+fi
+if [ $DEV == 1 ]; then
+        if [ -f $VANILLA ]; then
+                bash <(curl -s https://devuploads.com/upload.sh) -f $VANILLA -k "$DEV_KEYS"
+        fi
+        if [ -f $GAPPS ]; then
+                bash <(curl -s https://devuploads.com/upload.sh) -f $GAPPS -k "$DEV_KEYS"
+        fi
 fi
