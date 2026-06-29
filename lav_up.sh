@@ -18,6 +18,15 @@ echo "-----END OPENSSH PRIVATE KEY-----" >> mysfgtoken.txt
 chmod 600 mysfgtoken.txt
 ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
 
+vex () {
+    curl -X POST https://vexfile.com/api/upload/handle \
+      -H "Content-Type: application/json" \
+      -d "{
+        \"token\": \"$VEX_KEYS\",
+        \"url\": \"$1\"
+      }"
+}
+
 # site # Infinity-X-16 # Yaap-16 #LosExt-16
 SFG=0
 #SFG_TAG=Infinity-X-16
@@ -25,6 +34,7 @@ SFG=0
 SFG_TAG=Yaap-16
 GHR=0
 DEV=0
+VEX=0
 
 # links
 VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-VANILLA-UNOFFICIAL.zip
@@ -64,4 +74,16 @@ if [ $DEV == 1 ]; then
 	if [ -f $GAPPS_ZIP ]; then
 		bash <(curl -s https://devuploads.com/upload.sh) -f $GAPPS_ZIP -k "$DEV_KEYS"
 	fi
+fi
+if [ $VEX == 1 ]; then
+	TAG=TEMP_UPLOAD
+	gh release create $TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
+	gh release upload --clobber $TAG *.zip --repo https://github.com/ImSpiDy/build-release
+	if [ -f $VANILLA_ZIP ]; then
+		vex https://github.com/ImSpiDy/build-release/releases/download/$TAG/$VANILLA_ZIP
+	fi
+	if [ -f $GAPPS_ZIP ]; then
+		vex https://github.com/ImSpiDy/build-release/releases/download/$TAG/$GAPPS_ZIP
+	fi
+	gh release delete "$TAG" --cleanup-tag --yes -R https://ImSpiDy:$(gh auth token)@github.com/ImSpiDy/build-release
 fi
