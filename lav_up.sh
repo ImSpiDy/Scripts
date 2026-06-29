@@ -24,44 +24,44 @@ SFG=0
 #SFG_TAG=LosExt-16
 SFG_TAG=Yaap-16
 GHR=0
-DEV=1
+DEV=0
 
 # links
-VANILLA=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-VANILLA-UNOFFICIAL.zip
-GAPPS=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-GAPPS-UNOFFICIAL.zip
+VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-VANILLA-UNOFFICIAL.zip
+GAPPS_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.11-lavender-10.06.2026-GAPPS-UNOFFICIAL.zip
 
-if [ ! $VANILLA ]; then
-TAG=$(basename "$(dirname "$GAPPS")")
+if [ ! $VANILLA_URL ]; then
+	TAG=$(basename "$(dirname "$GAPPS_URL")")
 else
-TAG=$(basename "$(dirname "$VANILLA")")
+	TAG=$(basename "$(dirname "$VANILLA_URL")")
 fi
 
-VANILLA=$(basename "$VANILLA")
-GAPPS=$(basename "$GAPPS")
+VANILLA_ZIP="$(basename "$VANILLA_URL")"
+GAPPS_ZIP="$(basename "$GAPPS_URL")"
 
 # download tested builds
-gh release download $TAG -p $VANILLA -R https://github.com/ImSpiDy/Test-Builds
-gh release download $TAG -p $GAPPS -R https://github.com/ImSpiDy/Test-Builds
+gh release download $TAG -p $VANILLA_ZIP -R https://github.com/ImSpiDy/Test-Builds
+gh release download $TAG -p $GAPPS_ZIP -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
-        if [ -f $VANILLA ]; then
-                scp -i mysfgtoken.txt $VANILLA imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Vanilla/
-        fi
-        if [ -f $GAPPS ]; then
-                scp -i mysfgtoken.txt $GAPPS imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Gapps/
-        fi
+	if [ -f $VANILLA_ZIP ]; then
+		scp -i mysfgtoken.txt $VANILLA_ZIP imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Vanilla/
+	fi
+	if [ -f $GAPPS_ZIP ]; then
+		scp -i mysfgtoken.txt $GAPPS_ZIP imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Gapps/
+	fi
 fi
 if [ $GHR == 1 ]; then
 	TAG="$(tr '[:lower:]' '[:upper:]' <<< ${TAG:0:1})${TAG:1}"
-        # upload release builds
-        gh release create $TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
-        gh release upload --clobber $TAG *.zip --repo https://github.com/ImSpiDy/build-release
+	# upload release builds
+	gh release create $TAG --generate-notes --repo https://github.com/ImSpiDy/build-release
+	gh release upload --clobber $TAG *.zip --repo https://github.com/ImSpiDy/build-release
 fi
 if [ $DEV == 1 ]; then
-        if [ -f $VANILLA ]; then
-                bash <(curl -s https://devuploads.com/upload.sh) -f $VANILLA -k "$DEV_KEYS"
-        fi
-        if [ -f $GAPPS ]; then
-                bash <(curl -s https://devuploads.com/upload.sh) -f $GAPPS -k "$DEV_KEYS"
-        fi
+	if [ -f $VANILLA_ZIP ]; then
+		bash <(curl -s https://devuploads.com/upload.sh) -f $VANILLA_ZIP -k "$DEV_KEYS"
+	fi
+	if [ -f $GAPPS_ZIP ]; then
+		bash <(curl -s https://devuploads.com/upload.sh) -f $GAPPS_ZIP -k "$DEV_KEYS"
+	fi
 fi
