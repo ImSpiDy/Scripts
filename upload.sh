@@ -11,9 +11,14 @@ echo "[1] Github Release [gh auth login]
 [5] Gofile
 [6] oshi.at
 [7] Sourceforge [Key]
+[8] VexFiles [Key] [File Url]
 "
 read -p "Please enter your number: " UP
+if [ $UP == 8 ]; then
+read -p "Please enter uploaded file link " FP
+else
 read -p "Please enter file path/name: " FP
+fi
 
 read_secret() {
    echo -n "$1"; KEY=""; while IFS= read -r -s -n1 c; do [[ $c == $'\n' || $c == $'\0' ]] && echo && break; [[ $c == $'\177' ]] && KEY="${KEY%?}" && echo -ne "\b \b" || { KEY+="$c"; echo -n "*"; }; done
@@ -61,4 +66,15 @@ read -p "Please enter Username: " USER
 read -p "Please enter upload location:
 Note: Path after /home/frs/project/" UPL
 scp $FP "$USER"@frs.sourceforge.net:/home/frs/project/$UPL
+fi
+
+if [ $UP == 8 ]; then
+read_secret "Please enter Vex files API key: "
+echo -e "Started uploading file on VexFiles..."
+curl -X POST https://vexfile.com/api/upload/handle \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"token\": \"$TOKEN\",
+    \"url\": \"$URL\",
+  }"
 fi
