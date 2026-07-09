@@ -7,16 +7,18 @@ git config --global user.email "SpiDy2713@gmail.com"
 echo $gh_token > mytoken.txt # login in github
 gh auth login --with-token < mytoken.txt
 
-# login sfg (circle ci variable isn't working as intend"
-echo "-----BEGIN OPENSSH PRIVATE KEY-----" > mysfgtoken.txt
-echo $SFG1 >> mysfgtoken.txt
-echo $SFG2 >> mysfgtoken.txt
-echo $SFG3 >> mysfgtoken.txt
-echo $SFG4 >> mysfgtoken.txt
-echo $SFG5 >> mysfgtoken.txt
-echo "-----END OPENSSH PRIVATE KEY-----" >> mysfgtoken.txt
-chmod 600 mysfgtoken.txt
-ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
+sfg () {
+    # login sfg (circle ci variable isn't working as intend"
+    echo "-----BEGIN OPENSSH PRIVATE KEY-----" > mysfgtoken.txt
+    echo $SFG1 >> mysfgtoken.txt
+    echo $SFG2 >> mysfgtoken.txt
+    echo $SFG3 >> mysfgtoken.txt
+    echo $SFG4 >> mysfgtoken.txt
+    echo $SFG5 >> mysfgtoken.txt
+    echo "-----END OPENSSH PRIVATE KEY-----" >> mysfgtoken.txt
+    chmod 600 mysfgtoken.txt
+    ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
+}
 
 vex () {
     curl -X POST https://vexfile.com/api/upload/handle \
@@ -34,7 +36,7 @@ SFG=0
 SFG_TAG=Yaap-16
 GHR=0
 DEV=1
-VEX=1
+VEX=0
 
 # links
 VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-07.07.2026-VANILLA-UNOFFICIAL.zip
@@ -54,6 +56,7 @@ gh release download $TAG -p $VANILLA_ZIP -R https://github.com/ImSpiDy/Test-Buil
 gh release download $TAG -p $GAPPS_ZIP -R https://github.com/ImSpiDy/Test-Builds
 
 if [ $SFG == 1 ]; then
+	sfg
 	if [ -f $VANILLA_ZIP ]; then
 		scp -i mysfgtoken.txt $VANILLA_ZIP imspidy@frs.sourceforge.net:/home/frs/p/spidybuilds/lavender/$SFG_TAG/Vanilla/
 	fi
