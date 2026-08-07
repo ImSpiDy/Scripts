@@ -35,12 +35,12 @@ SFG=0
 #SFG_TAG=LosExt-16
 SFG_TAG=Yaap-16
 GHR=0
-DEV=1
+DEV=0
 VEX=1
 
 # links
-VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-12.07.2026-VANILLA-UNOFFICIAL.zip
-GAPPS_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-12.07.2026-GAPPS-UNOFFICIAL.zip
+VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/LineageExt-17-4.19/lineage-24.0-Ext-BETA-Community-lavender-Vanilla-20260807-0358.zip
+#GAPPS_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-12.07.2026-GAPPS-UNOFFICIAL.zip
 
 if [ ! $VANILLA_URL ]; then
 	TAG=$(basename "$(dirname "$GAPPS_URL")")
