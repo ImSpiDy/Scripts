@@ -39,8 +39,8 @@ DEV=0
 VEX=1
 
 # links
-VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-06.08.2026-VANILLA-UNOFFICIAL.zip
-GAPPS_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-06.08.2026-GAPPS-UNOFFICIAL.zip
+VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-15.08.2026-VANILLA-UNOFFICIAL.zip
+GAPPS_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-15.08.2026-GAPPS-UNOFFICIAL.zip
 
 if [ ! $VANILLA_URL ]; then
 	TAG=$(basename "$(dirname "$GAPPS_URL")")
