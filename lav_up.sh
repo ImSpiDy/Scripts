@@ -35,8 +35,8 @@ SFG=0
 #SFG_TAG=LosExt-16
 SFG_TAG=Yaap-16
 GHR=0
-DEV=0
-VEX=1
+DEV=1
+VEX=0
 
 # links
 VANILLA_URL=https://github.com/ImSpiDy/Test-Builds/releases/download/infinity-16-4.19/Project_Infinity-X-3.12-lavender-15.08.2026-VANILLA-UNOFFICIAL.zip
