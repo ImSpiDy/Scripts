@@ -30,7 +30,7 @@ vex () {
 }
 
 # site # Infinity-X-16 # Yaap-16 #LosExt-16
-SFG=1
+SFG=0
 SFG_TAG=Infinity-X-17
 #SFG_TAG=LosExt-16
 #SFG_TAG=Yaap-16
@@ -88,5 +88,6 @@ if [ $VEX == 1 ]; then
 	if [ -f $GAPPS_ZIP ]; then
 		vex https://github.com/ImSpiDy/build-release/releases/download/$TAG/$GAPPS_ZIP
 	fi
+	sleep 7m
 	gh release delete "$TAG" --cleanup-tag --yes -R https://ImSpiDy:$(gh auth token)@github.com/ImSpiDy/build-release
 fi
